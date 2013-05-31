@@ -1,0 +1,73 @@
+\documentclass{beamer}
+\usepackage[utf8x]{inputenc}
+\usepackage{color}
+\usepackage{listings}
+\usepackage{graphicx} % needed for beamer
+
+\lstset{%
+  language=C, % FIXME: nice syntax coloring for JSON
+  basicstyle=\ttfamily,
+	showspaces=false,
+	showstringspaces=false,
+	showtabs=false,
+}
+
+\usetheme{Boadilla}
+\usefonttheme{professionalfonts}
+\useoutertheme[subsection=false,footline=empty]{miniframes}
+\useinnertheme{circles}
+\setbeamertemplate{footline}[frame number]
+
+\author{slopjong, rohieb}
+\title{SpaceAPI}
+\subtitle{Dezentrales Hackerspace-Informationssystem}
+\institute{GPN13}
+\date{1. Juni 2013}
+
+\begin{document}
+\begin{frame}
+	\maketitle
+\end{frame}
+
+\begin{frame}{Motivation}
+\end{frame}
+
+\begin{frame}{Architektur}
+\end{frame}
+
+\begin{frame}[fragile]{Beispiel}
+\begin{lstlisting}[language=sh, basicstyle=\ttfamily\small]
+$ curl http://status.stratum0.org/status.json
+{
+  "api": "0.12",
+  "space": "Stratum 0",
+  "url": "https:\/\/stratum0.org",
+  "logo": "https:\/\/stratum0.org\/mediawiki\/images\/thumb\/c\/c6\/Sanduhr-twitter-avatar-black.svg\/240px-Sanduhr-twitter-avatar-black.svg.png",
+	"address": "Hamburger Strasse 273a, 38114 Braunschweig, Germany",
+  "lon": 10.5211247, "lat": 52.2785658,
+  "open": true,
+  "status": "We're open for public",
+  "lastchange": 1369899560
+  "contact": {
+    "phone": "+4953128769245",
+    "twitter": "@stratum0",
+    "ml": "normalverteiler@stratum0.org",
+    "issue-mail": "cm9oaWViK3NwYWNlYXBpLWlzc3Vlc0Byb2hpZWIubmFtZQ==",
+    "irc": "irc:\/\/irc.freenode.net\/#stratum0"
+  },
+  "icon": {
+    "open": "http:\/\/status.stratum0.org\/open_square.png",
+    "closed": "http:\/\/status.stratum0.org\/closed_square.png"
+  } }
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Kontakt}
+\begin{itemize}
+	\item \url{http://spaceapi.net}
+	\item Mailingliste:
+		\url{http://lists.hackerspaces.org/mailman/listinfo/spaceapi-devel}
+	\item IRC: \texttt{\#spaceapi} auf FreeNode
+\end{itemize}
+\end{frame}
+\end{document}
