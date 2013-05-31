@@ -5,8 +5,8 @@
 \usepackage{graphicx} % needed for beamer
 
 \lstset{%
-  language=C, % FIXME: nice syntax coloring for JSON
-  basicstyle=\ttfamily,
+  language=sh, % FIXME: nice syntax coloring for JSON
+  basicstyle=\ttfamily\footnotesize,
 	showspaces=false,
 	showstringspaces=false,
 	showtabs=false,
@@ -29,14 +29,50 @@
 	\maketitle
 \end{frame}
 
+\section{Motivation}
 \begin{frame}{Motivation}
+\begin{itemize}
+	\item einheitliche API für Metadaten über Hackerspaces
+	\pause
+	\begin{itemize}
+		\item Adressen
+		\item Kontaktdaten
+		\item Events
+		\item you name it.
+	\end{itemize}
+	\pause
+	\item we love dataporn
+\end{itemize}
 \end{frame}
 
+\section{Architektur}
 \begin{frame}{Architektur}
+FIXME
 \end{frame}
+
+\subsection{OpenSpace Directory}
+\begin{frame}[fragile]{OpenSpace Directory}
+\texttt{GET} \url{http://openspace.slopjong.de/directory.json}
+\begin{itemize}
+	\item Mapping Hackerspace-Name $\Rightarrow$ Endpoint-URL
+	\item Attribut-Filter
+\end{itemize}
+
+\begin{lstlisting}
+$ curl http://openspace.slopjong.de/directory.json?filter=cam
+{
+"Ace Monster Toys":"http:\/\/acemonstertoys.org\/status.json",
+"Bitlair":"https:\/\/bitlair.nl\/statejson.php",
+"FamiLAB":"http:\/\/familab.org\/status\/status.php",
+"Farset Labs":"http:\/\/openspace.slopjong.de\/cache\/Farset+Labs",
+[...]
+}
+\end{lstlisting}
+\end{frame}
+
 
 \begin{frame}[fragile]{Beispiel}
-\begin{lstlisting}[language=sh, basicstyle=\ttfamily\small]
+\begin{lstlisting}
 $ curl http://status.stratum0.org/status.json
 {
   "api": "0.12",
