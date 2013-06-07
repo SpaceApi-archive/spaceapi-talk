@@ -10,6 +10,8 @@
 	showspaces=false,
 	showstringspaces=false,
 	showtabs=false,
+	keepspaces=true,
+	%breaklines=true,
 }
 
 \usetheme{Boadilla}
@@ -31,6 +33,13 @@
 
 \section{Motivation}
 \begin{frame}{Motivation}
+	Jeder Hackerspace kennt das Problem\ldots
+	\begin{center}
+	\includegraphics[width=0.9\textwidth]{openclose-impl.png}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Motivation}
 \begin{itemize}
 	\item einheitliche API für Metadaten über Hackerspaces
 	\pause
@@ -38,40 +47,55 @@
 		\item Adressen
 		\item Kontaktdaten
 		\item Events
-		\item you name it.
+		\item \ldots you name it.
 	\end{itemize}
 	\pause
-	\item we love dataporn
+	\item because we can
+	\item more dataporn
 \end{itemize}
 \end{frame}
 
 \section{Architektur}
 \begin{frame}{Architektur}
-FIXME
+\begin{itemize}
+	\item HTTP
+	\item JSON
+	\item dezentral!
+	\begin{itemize}
+		\item Endpoints
+		\item OpenSpace Directory
+	\end{itemize}
+\end{itemize}
 \end{frame}
 
 \subsection{OpenSpace Directory}
 \begin{frame}[fragile]{OpenSpace Directory}
-\texttt{GET} \url{http://openspace.slopjong.de/directory.json}
+\texttt{GET} \url{http://spaceapi.net/directory.json}
 \begin{itemize}
 	\item Mapping Hackerspace-Name $\Rightarrow$ Endpoint-URL
 	\item Attribut-Filter
 \end{itemize}
 
 \begin{lstlisting}
-$ curl http://openspace.slopjong.de/directory.json?filter=cam
+$ curl http://spaceapi.net/directory.json?filter=cam
 {
-"Ace Monster Toys":"http:\/\/acemonstertoys.org\/status.json",
-"Bitlair":"https:\/\/bitlair.nl\/statejson.php",
-"FamiLAB":"http:\/\/familab.org\/status\/status.php",
-"Farset Labs":"http:\/\/openspace.slopjong.de\/cache\/Farset+Labs",
-[...]
+  "Ace Monster Toys":"http:\/\/acemonstertoys.org\/status.json",
+  "Bitlair":"https:\/\/bitlair.nl\/statejson.php",
+  "FamiLAB":"http:\/\/familab.org\/status\/status.php",
+  "Farset Labs":"http:\/\/openspace.slopjong.de\/cache\/Farset+Labs",
+  [...]
 }
 \end{lstlisting}
 \end{frame}
 
+\begin{frame}{ALL the Spaces}
+	\begin{center}
+		\includegraphics[width=0.9\textwidth]{allthespaces.png}
+	\end{center}
+\end{frame}
 
-\begin{frame}[fragile]{Beispiel}
+\subsection{Endpoints}
+\begin{frame}[fragile]{Endpoints}
 \begin{lstlisting}
 $ curl http://status.stratum0.org/status.json
 {
@@ -79,23 +103,37 @@ $ curl http://status.stratum0.org/status.json
   "space": "Stratum 0",
   "url": "https:\/\/stratum0.org",
   "logo": "https:\/\/stratum0.org\/mediawiki\/images\/thumb\/c\/c6\/Sanduhr-twitter-avatar-black.svg\/240px-Sanduhr-twitter-avatar-black.svg.png",
-	"address": "Hamburger Strasse 273a, 38114 Braunschweig, Germany",
+  "address": "Hamburger Strasse 273a, 38114 Braunschweig, Germany",
   "lon": 10.5211247, "lat": 52.2785658,
-  "open": true,
-  "status": "We're open for public",
   "lastchange": 1369899560
+  "open": true, "status": "We're open for public",
   "contact": {
     "phone": "+4953128769245",
     "twitter": "@stratum0",
     "ml": "normalverteiler@stratum0.org",
-    "issue-mail": "cm9oaWViK3NwYWNlYXBpLWlzc3Vlc0Byb2hpZWIubmFtZQ==",
-    "irc": "irc:\/\/irc.freenode.net\/#stratum0"
-  },
+    "irc": "irc:\/\/irc.freenode.net\/#stratum0" },
   "icon": {
     "open": "http:\/\/status.stratum0.org\/open_square.png",
     "closed": "http:\/\/status.stratum0.org\/closed_square.png"
   } }
 \end{lstlisting}
+\end{frame}
+
+\section{Apps}
+\begin{frame}{Hackerspace Globe}
+\begin{center}
+\includegraphics[height=0.7\textheight]{hackerspace-globe.png}
+
+\url{http://joewalnes.github.io/hackerspace-globe/}
+\end{center}
+\end{frame}
+
+\begin{frame}{Hackerspace Globe}
+\begin{center}
+\includegraphics[height=0.7\textheight]{my-hackerspace.png}
+
+\url{https://github.com/fixme-lausanne/MyHackerspace}
+\end{center}
 \end{frame}
 
 \begin{frame}[fragile]{Kontakt}
